@@ -1,12 +1,14 @@
 package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
+import com.demoqa.pages.components.FooterComponent;
 
 import static com.codeborne.selenide.Condition.text;
 import static com.codeborne.selenide.Selenide.*;
 import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class TextBoxPage {
+    FooterComponent footerComponent = new FooterComponent();
     SelenideElement
             userFullNameInput = $("#userName"),
             userEmailInput = $("#userEmail"),
@@ -17,8 +19,10 @@ public class TextBoxPage {
 
     public TextBoxPage openPage() {
         open("text-box");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        return this;
+    }
+    public TextBoxPage deletedFooter() {
+        footerComponent.deletedFooter();
         return this;
     }
     public TextBoxPage setFullName(String fullName) {

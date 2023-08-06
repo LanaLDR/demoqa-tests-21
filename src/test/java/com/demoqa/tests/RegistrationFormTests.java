@@ -10,19 +10,12 @@ import java.util.List;
 
 public class RegistrationFormTests extends TestBase{
 
-    static {
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        Configuration.browserCapabilities = capabilities;
-    }
-
     RegistrationPage registrationPage = new RegistrationPage();
 
     @Test
     void fillingAllFieldsTest() {
         registrationPage.openPage()
+                .deletedFooter()
                 .setFirstName("Kirill")
                 .setLastName("Ivanov")
                 .setUserEmail("kirill.ivanov@gmail.com")

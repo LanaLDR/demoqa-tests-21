@@ -8,19 +8,12 @@ import org.openqa.selenium.remote.DesiredCapabilities;
 
 public class TextBoxTest extends TestBase{
 
-    static {
-        ChromeOptions options = new ChromeOptions();
-        options.setBinary("/Applications/Google Chrome.app/Contents/MacOS/Google Chrome");
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability(ChromeOptions.CAPABILITY, options);
-        Configuration.browserCapabilities = capabilities;
-    }
-
     TextBoxPage textBoxPage = new TextBoxPage();
 
     @Test
     public void registrationTextBoxTest() {
         textBoxPage.openPage()
+                .deletedFooter()
                 .setFullName("Kirill Ivanov")
                 .setEmail("kek@gmail.com")
                 .setCurrentAddress("Oktabrskaya 12")

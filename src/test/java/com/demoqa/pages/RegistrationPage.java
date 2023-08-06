@@ -2,6 +2,7 @@ package com.demoqa.pages;
 
 import com.codeborne.selenide.SelenideElement;
 import com.demoqa.pages.components.CalendarComponent;
+import com.demoqa.pages.components.FooterComponent;
 
 import java.util.List;
 
@@ -12,11 +13,12 @@ import static com.codeborne.selenide.Selenide.executeJavaScript;
 
 public class RegistrationPage {
     CalendarComponent calendarComponent = new CalendarComponent();
+    FooterComponent footerComponent = new FooterComponent();
     SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmail = $("#userEmail"),
-            genterWrapper = $("#genterWrapper"),
+            genderWrapper = $("#genterWrapper"),
             userNumber = $("#userNumber"),
             birthDateInput = $("#dateOfBirth").$(".react-datepicker-wrapper"),
             subjectInput = $("#subjectsInput"),
@@ -30,8 +32,11 @@ public class RegistrationPage {
 
     public RegistrationPage openPage() {
         open("automation-practice-form");
-        executeJavaScript("$('#fixedban').remove()");
-        executeJavaScript("$('footer').remove()");
+        return this;
+    }
+
+    public RegistrationPage deletedFooter() {
+        footerComponent.deletedFooter();
         return this;
     }
 
@@ -48,7 +53,7 @@ public class RegistrationPage {
         return this;
     }
     public RegistrationPage setGender(String value) {
-        genterWrapper.$(byText(value)).click();
+        genderWrapper.$(byText(value)).click();
         return this;
     }
     public RegistrationPage setUserNumber(String number) {
