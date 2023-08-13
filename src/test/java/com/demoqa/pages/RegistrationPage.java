@@ -11,9 +11,12 @@ import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class RegistrationPage {
+
     CalendarComponent calendarComponent = new CalendarComponent();
+
     FooterComponent footerComponent = new FooterComponent();
-    SelenideElement
+
+    private SelenideElement
             firstNameInput = $("#firstName"),
             lastNameInput = $("#lastName"),
             userEmail = $("#userEmail"),
@@ -24,8 +27,8 @@ public class RegistrationPage {
             hobbiesWrapper = $("#hobbiesWrapper"),
             uploadPicturesField = $("#uploadPicture"),
             currentAddress = $("#currentAddress"),
-            state = $("#state"),
-            city = $("#city"),
+            stateInputSelector = $("#state"),
+            cityInputSelector = $("#city"),
             submitButton = $("#submit"),
             tableResultTr = $(".table-responsive");
 
@@ -95,14 +98,14 @@ public class RegistrationPage {
     }
 
     public RegistrationPage selectState(String stateName) {
-        state.scrollTo().click();
-        state.$(byText(stateName)).click();
+        stateInputSelector.scrollTo().click();
+        stateInputSelector.$(byText(stateName)).click();
         return this;
     }
 
     public RegistrationPage selectCity(String cityName) {
-        city.scrollTo().click();
-        city.$(byText(cityName)).click();
+        cityInputSelector.scrollTo().click();
+        cityInputSelector.$(byText(cityName)).click();
         return this;
     }
 

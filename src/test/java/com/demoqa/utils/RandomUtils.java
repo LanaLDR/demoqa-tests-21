@@ -35,7 +35,6 @@ public class RandomUtils {
         return fakerEng.numerify("##########");
     }
 
-
     public static List<String> getRandomSubjects() {
         int rndNum = getRandomInt(0, subjects.size());
         shuffle(subjects);

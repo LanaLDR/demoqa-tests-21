@@ -46,9 +46,8 @@ public class TextBoxPage {
         return this;
     }
 
-    public TextBoxPage clickSubmitButton() {
+    public void clickSubmitButton() {
         submitButton.click();
-        return this;
     }
 
     public TextBoxPage checkNameResult(String name) {
