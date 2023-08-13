@@ -1,44 +1,42 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.RegistrationPage;
+import com.demoqa.utils.TestData;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-import java.util.List;
-
-public class RegistrationFormTests extends TestBase{
+public class RegistrationFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
 
     @Test
     void fillingAllFieldsTest() {
+
         registrationPage.openPage()
                 .deletedFooter()
-                .setFirstName("Kirill")
-                .setLastName("Ivanov")
-                .setUserEmail("kirill.ivanov@gmail.com")
-                .setGender("Male")
-                .setUserNumber("8980362893")
-                .setBirthDate("20", "January", "1999")
-                .setSubjects(List.of("Math", "English"))
-                .setHobbies(List.of("Sports", "Music"))
-                .uploadPicture("картиночкааа.jpg")
-                .setCurrentAddress("Emlutina 12, 165")
-                .selectState("NCR")
-                .selectCity("Gurgaon")
+                .setFirstName(testData.randomFirstName)
+                .setLastName(testData.randomLastName)
+                .setUserEmail(testData.randomEmail)
+                .setGender(testData.randomGender)
+                .setUserNumber(testData.randomPhone)
+                .setBirthDate(testData.randomDay, testData.randomMonth, testData.randomYear)
+                .setSubjects(testData.randomSubjects)
+                .setHobbies(testData.randomHobbies)
+                .uploadPicture(testData.defaultImage)
+                .setCurrentAddress(testData.randomAddress)
+                .selectState(testData.randomState)
+                .selectCity(testData.randomCity)
                 .submitRegistration();
 
-        registrationPage.checkTableResult("Student Name", "Kirill Ivanov")
-                        .checkTableResult("Student Email", "kirill.ivanov@gmail.com")
-                        .checkTableResult("Gender", "Male")
-                        .checkTableResult("Mobile", "8980362893")
-                        .checkTableResult("Date of Birth", "20 January,1999")
-                        .checkTableResult("Subjects", "Maths, English")
-                        .checkTableResult("Hobbies", "Sports, Music")
-                        .checkTableResult("Picture", "картиночкааа.jpg")
-                        .checkTableResult("Address", "Emlutina 12, 165")
-                        .checkTableResult("State and City", "NCR Gurgaon");
+        registrationPage.checkTableResult("Student Name", testData.randomFirstName + " " + testData.randomLastName)
+                .checkTableResult("Student Email", testData.randomEmail)
+                .checkTableResult("Gender", testData.randomGender)
+                .checkTableResult("Mobile", testData.randomPhone)
+                .checkTableResult("Date of Birth", testData.randomDay + " " + testData.randomMonth + "," + testData.randomYear)
+                .checkTableResult("Subjects", String.join(", ", testData.randomSubjects))
+                .checkTableResult("Hobbies", String.join(", ", testData.randomHobbies))
+                .checkTableResult("Picture", testData.defaultImage)
+                .checkTableResult("Address", testData.randomAddress)
+                .checkTableResult("State and City", testData.randomState + " " + testData.randomCity);
     }
 }
