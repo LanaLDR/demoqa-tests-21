@@ -5,17 +5,18 @@ import java.util.List;
 import static com.demoqa.utils.RandomUtils.*;
 
 public class TestData {
-    public String randomFirstName = getRandomFirstName(),
-            randomLastName = getRandomLastName(),
-            randomEmail = getRandomEmail(),
-            randomGender = getRandomGender(),
-            randomPhone = getRandomPhone(),
-            randomAddress = getRandomAddress(),
-            randomState = getRandomState(),
+    RandomUtils randomUtils = new RandomUtils();
+    public String randomFirstName = randomUtils.getRandomFirstName(),
+            randomLastName = randomUtils.getRandomLastName(),
+            randomEmail = randomUtils.getRandomEmail(),
+            randomGender = randomUtils.getRandomGender(),
+            randomPhone = randomUtils.getRandomPhone(),
+            randomAddress = randomUtils.getRandomAddress(),
+            randomState = randomUtils.getRandomState(),
             randomCity = getRandomCity(randomState),
-            randomMonth = getRandomMonth(),
-            randomYear = getRandomYear(),
-            randomDay = getRandomDay(),
+            randomMonth = randomUtils.getRandomMonth(),
+            randomYear = randomUtils.getRandomYear(),
+            randomDay = randomUtils.getRandomDay(),
             defaultImage = "картиночкааа.jpg";
 
     public List<String> randomSubjects = getRandomSubjects(),
