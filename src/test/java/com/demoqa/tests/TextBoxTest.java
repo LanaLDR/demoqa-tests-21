@@ -1,12 +1,10 @@
 package com.demoqa.tests;
 
-import com.codeborne.selenide.Configuration;
 import com.demoqa.pages.TextBoxPage;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.chrome.ChromeOptions;
-import org.openqa.selenium.remote.DesiredCapabilities;
 
-public class TextBoxTest extends TestBase{
+
+public class TextBoxTest extends TestBase {
 
     TextBoxPage textBoxPage = new TextBoxPage();
 

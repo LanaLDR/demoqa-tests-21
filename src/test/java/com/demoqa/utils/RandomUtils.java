@@ -1,29 +1,19 @@
 package com.demoqa.utils;
 
 import com.github.javafaker.Faker;
-
-import java.security.SecureRandom;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
 import static java.util.Collections.shuffle;
 
 public class RandomUtils {
-    static Faker fakerEng = new Faker(new Locale("en"));
-    static String[] genders = {"Male", "Female", "Other"};
-    static String[] months =  {"January", "February", "March", "April", "May", "June",
+    private static Faker fakerEng = new Faker(new Locale("en"));
+    private static String[] genders = {"Male", "Female", "Other"};
+    private static String[] months = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
-    static List<String> subjects = Arrays.asList("Maths", "English", "Physics", "Chemistry", "Computer Science");
-    static List<String> hobbies = Arrays.asList("Sports", "Reading", "Music");
-    static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
-    public static void main(String[] args) {
-        System.out.println(getRandomFirstName());
-        System.out.println(getRandomLastName());
-        System.out.println(getRandomEmail());
-        System.out.println(getRandomPhone());
-        System.out.println(getRandomDate());
-        System.out.println(getRandomSubjects());
-    }
+    private static List<String> subjects = Arrays.asList("Maths", "English", "Physics", "Chemistry", "Computer Science");
+    private static List<String> hobbies = Arrays.asList("Sports", "Reading", "Music");
+    private static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
     public static String getRandomFirstName() {
         return fakerEng.name().firstName();
@@ -45,9 +35,6 @@ public class RandomUtils {
         return fakerEng.numerify("##########");
     }
 
-    public static Date getRandomDate() {
-        return fakerEng.date().birthday();
-    }
 
     public static List<String> getRandomSubjects() {
         int rndNum = getRandomInt(0, subjects.size());
@@ -70,21 +57,21 @@ public class RandomUtils {
     }
 
     public static String getRandomCity(String state) {
-        switch(state) {
+        switch (state) {
             case "NCR": {
-                String[] city =  {"Delhi", "Gurgaon", "Noida"};
+                String[] city = {"Delhi", "Gurgaon", "Noida"};
                 return new Faker().options().option(city);
             }
             case "Uttar Pradesh": {
-                String[] city =  {"Agra", "Lucknow", "Merrut"};
+                String[] city = {"Agra", "Lucknow", "Merrut"};
                 return new Faker().options().option(city);
             }
             case "Haryana": {
-                String[] city =  {"Karnal", "Panipat"};
+                String[] city = {"Karnal", "Panipat"};
                 return new Faker().options().option(city);
             }
             case "Rajasthan": {
-                String[] city =  {"Jaipur", "Jaiselmer"};
+                String[] city = {"Jaipur", "Jaiselmer"};
                 return new Faker().options().option(city);
             }
             default:
@@ -103,16 +90,6 @@ public class RandomUtils {
     public static String getRandomDay() {
         String day = fakerEng.random().nextInt(1, 28).toString();
         return Integer.parseInt(day) > 10 ? day : "0" + day;
-    }
-
-    public static String getRandomString(int len) {
-        String AB = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
-        SecureRandom rnd = new SecureRandom();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < len; i++)
-            sb.append(AB.charAt(rnd.nextInt(AB.length())));
-
-        return sb.toString();
     }
 
     public static int getRandomInt(int min, int max) {

@@ -1,42 +1,42 @@
 package com.demoqa.tests;
 
 import com.demoqa.pages.RegistrationPage;
+import com.demoqa.utils.TestData;
 import org.junit.jupiter.api.Test;
 
-import static com.demoqa.utils.TestData.*;
-
-public class RegistrationFormTests extends TestBase{
+public class RegistrationFormTests extends TestBase {
 
     RegistrationPage registrationPage = new RegistrationPage();
+    TestData testData = new TestData();
 
     @Test
     void fillingAllFieldsTest() {
 
         registrationPage.openPage()
                 .deletedFooter()
-                .setFirstName(randomFirstName)
-                .setLastName(randomLastName)
-                .setUserEmail(randomEmail)
-                .setGender(randomGender)
-                .setUserNumber(randomPhone)
-                .setBirthDate(randomDay, randomMonth, randomYear)
-                .setSubjects(randomSubjects)
-                .setHobbies(randomHobbies)
-                .uploadPicture(defaultImage)
-                .setCurrentAddress(randomAddress)
-                .selectState(randomState)
-                .selectCity(randomCity)
+                .setFirstName(testData.randomFirstName)
+                .setLastName(testData.randomLastName)
+                .setUserEmail(testData.randomEmail)
+                .setGender(testData.randomGender)
+                .setUserNumber(testData.randomPhone)
+                .setBirthDate(testData.randomDay, testData.randomMonth, testData.randomYear)
+                .setSubjects(testData.randomSubjects)
+                .setHobbies(testData.randomHobbies)
+                .uploadPicture(testData.defaultImage)
+                .setCurrentAddress(testData.randomAddress)
+                .selectState(testData.randomState)
+                .selectCity(testData.randomCity)
                 .submitRegistration();
 
-        registrationPage.checkTableResult("Student Name", randomFirstName+" "+ randomLastName)
-                        .checkTableResult("Student Email", randomEmail)
-                        .checkTableResult("Gender", randomGender)
-                        .checkTableResult("Mobile", randomPhone)
-                        .checkTableResult("Date of Birth", randomDay + " " + randomMonth + "," + randomYear)
-                        .checkTableResult("Subjects", String.join(", ", randomSubjects))
-                        .checkTableResult("Hobbies", String.join(", ", randomHobbies))
-                        .checkTableResult("Picture", defaultImage)
-                        .checkTableResult("Address", randomAddress)
-                        .checkTableResult("State and City", randomState + " " + randomCity);
+        registrationPage.checkTableResult("Student Name", testData.randomFirstName + " " + testData.randomLastName)
+                .checkTableResult("Student Email", testData.randomEmail)
+                .checkTableResult("Gender", testData.randomGender)
+                .checkTableResult("Mobile", testData.randomPhone)
+                .checkTableResult("Date of Birth", testData.randomDay + " " + testData.randomMonth + "," + testData.randomYear)
+                .checkTableResult("Subjects", String.join(", ", testData.randomSubjects))
+                .checkTableResult("Hobbies", String.join(", ", testData.randomHobbies))
+                .checkTableResult("Picture", testData.defaultImage)
+                .checkTableResult("Address", testData.randomAddress)
+                .checkTableResult("State and City", testData.randomState + " " + testData.randomCity);
     }
 }
