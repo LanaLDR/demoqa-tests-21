@@ -7,7 +7,7 @@ import java.util.concurrent.ThreadLocalRandom;
 import static java.util.Collections.shuffle;
 
 public class RandomUtils {
-    private static Faker fakerEng = new Faker(new Locale("en"));
+    private Faker fakerEng = new Faker(new Locale("en"));
     private static String[] genders = {"Male", "Female", "Other"};
     private static String[] months = {"January", "February", "March", "April", "May", "June",
             "July", "August", "September", "October", "November", "December"};
@@ -15,23 +15,23 @@ public class RandomUtils {
     private static List<String> hobbies = Arrays.asList("Sports", "Reading", "Music");
     private static String[] state = {"NCR", "Uttar Pradesh", "Haryana", "Rajasthan"};
 
-    public static String getRandomFirstName() {
+    public String getRandomFirstName() {
         return fakerEng.name().firstName();
     }
 
-    public static String getRandomLastName() {
+    public String getRandomLastName() {
         return fakerEng.name().lastName();
     }
 
-    public static String getRandomEmail() {
+    public String getRandomEmail() {
         return fakerEng.internet().emailAddress();
     }
 
-    public static String getRandomGender() {
+    public String getRandomGender() {
         return fakerEng.options().option(genders);
     }
 
-    public static String getRandomPhone() {
+    public String getRandomPhone() {
         return fakerEng.numerify("##########");
     }
 
@@ -48,11 +48,11 @@ public class RandomUtils {
         return hobbies.subList(0, rndNum);
     }
 
-    public static String getRandomAddress() {
+    public String getRandomAddress() {
         return fakerEng.address().fullAddress();
     }
 
-    public static String getRandomState() {
+    public String getRandomState() {
         return fakerEng.options().option(state);
     }
 
@@ -79,15 +79,15 @@ public class RandomUtils {
         }
     }
 
-    public static String getRandomMonth() {
+    public String getRandomMonth() {
         return fakerEng.options().option(months);
     }
 
-    public static String getRandomYear() {
+    public String getRandomYear() {
         return fakerEng.random().nextInt(1900, 2023).toString();
     }
 
-    public static String getRandomDay() {
+    public String getRandomDay() {
         String day = fakerEng.random().nextInt(1, 28).toString();
         return Integer.parseInt(day) > 10 ? day : "0" + day;
     }
