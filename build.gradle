@@ -30,8 +30,17 @@ dependencies {
     testImplementation (
             'com.codeborne:selenide:6.16.0',
             'com.github.javafaker:javafaker:1.0.2',
-            'org.junit.jupiter:junit-jupiter:5.9.3'
+            'org.junit.jupiter:junit-jupiter:5.9.3',
+            'io.qameta.allure:allure-selenide:2.23.0'
     )
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
 }
 
 test {
@@ -41,5 +50,11 @@ test {
 task simple_test(type: Test) {
     useJUnitPlatform {
         includeTags("simple")
+    }
+}
+
+task remote_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("remote")
     }
 }
