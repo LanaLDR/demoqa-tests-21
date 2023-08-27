@@ -6,7 +6,7 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
-import static com.codeborne.selenide.logevents.SelenideLogger.step;
+import static io.qameta.allure.Allure.step;
 
 public class RegistrationFormTests extends TestBase {
 
@@ -40,7 +40,6 @@ public class RegistrationFormTests extends TestBase {
 
         step("Кликаем submit", () -> {
             registrationPage.submitRegistration();
-
         });
 
         step("Проверяем сохранение введеных данных", () -> {

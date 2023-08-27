@@ -17,7 +17,7 @@ public class TestData {
             randomMonth = randomUtils.getRandomMonth(),
             randomYear = randomUtils.getRandomYear(),
             randomDay = randomUtils.getRandomDay(),
-            defaultImage = "картиночкааа.jpg";
+            defaultImage = "image.jpg";
 
     public List<String> randomSubjects = getRandomSubjects(),
             randomHobbies = getRandomHobbies();
