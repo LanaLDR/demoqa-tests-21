@@ -15,14 +15,13 @@ public class TestBase {
 
     @BeforeAll
     static void beforeAll() {
-        String selenoidUser = System.getProperty("selenoidUser");
-        String selenoidWdHost = System.getProperty("selenoidWdHost");
 
-        Configuration.browserSize = "1920x1080";
+        Configuration.browserSize = System.getProperty("browserSize", "1920x1080");
+        Configuration.browserVersion = System.getProperty("browserVersion");
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.baseUrl = "https://demoqa.com/";
-        Configuration.remote = "https://" + selenoidUser + "@" + selenoidWdHost;
+        Configuration.remote = "https://" + System.getProperty("selenoidUser") + "@" + System.getProperty("selenoidWdHost") + "/wd/hub";
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
