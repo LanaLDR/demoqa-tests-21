@@ -21,7 +21,7 @@ public class TestBase {
         Configuration.pageLoadStrategy = "eager";
         Configuration.browser = System.getProperty("browser", "chrome");
         Configuration.baseUrl = "https://demoqa.com/";
-        Configuration.remote = "https://" + System.getProperty("selenoidUser") + "@" + System.getProperty("selenoidWdHost") + "/wd/hub";
+        Configuration.remote = System.getProperty("remoteDriver");
 
         DesiredCapabilities capabilities = new DesiredCapabilities();
         capabilities.setCapability("selenoid:options", Map.<String, Object>of(
